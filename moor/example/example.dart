@@ -12,6 +12,14 @@ class Recipes extends Table {
   IntColumn get category => integer().nullable()();
 }
 
+class Test {
+
+}
+
+class Te extends Test {
+
+}
+
 class Ingredients extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get name => text()();

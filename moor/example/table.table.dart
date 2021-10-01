@@ -13,6 +13,10 @@ class CategoriesTable extends Table {
   TextColumn get fs => text().nullable()();
   BoolColumn get isActive => boolean()();
   RealColumn get reals => real()();
+  TextColumn get t => text().map(const ListConverter<Te>()).nullable()();
+  DateTimeColumn get time => dateTime()();
+  DateTimeColumn get tyime => dateTime().nullable()();
+  TextColumn get test => text().map(const EConverter<Test>())();
   @override
   Set<Column> get primaryKey => {id};
 }

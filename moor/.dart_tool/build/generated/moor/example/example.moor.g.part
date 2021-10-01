@@ -9,35 +9,46 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
   final Value<String?> fs;
   final Value<bool> isActive;
   final Value<double> reals;
+  final Value<List<Te>?> t;
+  final Value<DateTime> time;
+  final Value<DateTime?> tyime;
+  final Value<Test> test;
   const CategoriesTableCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.fs = const Value.absent(),
     this.isActive = const Value.absent(),
     this.reals = const Value.absent(),
+    this.t = const Value.absent(),
+    this.time = const Value.absent(),
+    this.tyime = const Value.absent(),
+    this.test = const Value.absent(),
   });
-  CategoriesTableCompanion.insertFrom(CategoriesTableCompanion from) {
-    this.id = Value.of(from.id);
-    this.name = Value.of(from.name);
-    this.fs = Value.of(from.fs);
-    this.isActive = Value.of(from.isActive);
-    this.reals = Value.of(from.reals);
-  }
   CategoriesTableCompanion.insert({
     this.id = const Value.absent(),
     required String name,
     this.fs = const Value.absent(),
     required bool isActive,
     required double reals,
+    this.t = const Value.absent(),
+    required DateTime time,
+    this.tyime = const Value.absent(),
+    required Test test,
   })  : name = Value(name),
         isActive = Value(isActive),
-        reals = Value(reals);
+        reals = Value(reals),
+        time = Value(time),
+        test = Value(test);
   static Insertable<Categories> custom({
     Expression<int>? id,
     Expression<String>? name,
     Expression<String?>? fs,
     Expression<bool>? isActive,
     Expression<double>? reals,
+    Expression<List<Te>?>? t,
+    Expression<DateTime>? time,
+    Expression<DateTime?>? tyime,
+    Expression<Test>? test,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -45,6 +56,10 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
       if (fs != null) 'fs': fs,
       if (isActive != null) 'is_active': isActive,
       if (reals != null) 'reals': reals,
+      if (t != null) 't': t,
+      if (time != null) 'time': time,
+      if (tyime != null) 'tyime': tyime,
+      if (test != null) 'test': test,
     });
   }
 
@@ -53,13 +68,21 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
       Value<String>? name,
       Value<String?>? fs,
       Value<bool>? isActive,
-      Value<double>? reals}) {
+      Value<double>? reals,
+      Value<List<Te>?>? t,
+      Value<DateTime>? time,
+      Value<DateTime?>? tyime,
+      Value<Test>? test}) {
     return CategoriesTableCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
       fs: fs ?? this.fs,
       isActive: isActive ?? this.isActive,
       reals: reals ?? this.reals,
+      t: t ?? this.t,
+      time: time ?? this.time,
+      tyime: tyime ?? this.tyime,
+      test: test ?? this.test,
     );
   }
 
@@ -81,7 +104,35 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
     if (reals.present) {
       map['reals'] = Variable<double>(reals.value);
     }
+    if (t.present) {
+      final converter = $CategoriesTableTable.$converter0;
+      map['t'] = Variable<String?>(converter.mapToSql(t.value));
+    }
+    if (time.present) {
+      map['time'] = Variable<DateTime>(time.value);
+    }
+    if (tyime.present) {
+      map['tyime'] = Variable<DateTime?>(tyime.value);
+    }
+    if (test.present) {
+      final converter = $CategoriesTableTable.$converter1;
+      map['test'] = Variable<String>(converter.mapToSql(test.value)!);
+    }
     return map;
+  }
+
+  CategoriesTableCompanion setCategoriesTableCompanion(Categories from) {
+    return CategoriesTableCompanion(
+      id: Value(from.id),
+      name: Value(from.name),
+      fs: Value(from.fs),
+      isActive: Value(from.isActive),
+      reals: Value(from.reals),
+      t: Value(from.t),
+      time: Value(from.time),
+      tyime: Value(from.tyime),
+      test: Value(from.test),
+    );
   }
 
   factory CategoriesTableCompanion.fromRowClass(Categories object,
@@ -102,7 +153,11 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
           ..write('name: $name, ')
           ..write('fs: $fs, ')
           ..write('isActive: $isActive, ')
-          ..write('reals: $reals')
+          ..write('reals: $reals, ')
+          ..write('t: $t, ')
+          ..write('time: $time, ')
+          ..write('tyime: $tyime, ')
+          ..write('test: $test')
           ..write(')'))
         .toString();
   }
@@ -135,8 +190,27 @@ class $CategoriesTableTable extends CategoriesTable
   late final GeneratedColumn<double?> reals = GeneratedColumn<double?>(
       'reals', aliasedName, false,
       typeName: 'REAL', requiredDuringInsert: true);
+  final VerificationMeta _tMeta = const VerificationMeta('t');
+  late final GeneratedColumnWithTypeConverter<List<Te>, String?> t =
+      GeneratedColumn<String?>('t', aliasedName, true,
+              typeName: 'TEXT', requiredDuringInsert: false)
+          .withConverter<List<Te>>($CategoriesTableTable.$converter0);
+  final VerificationMeta _timeMeta = const VerificationMeta('time');
+  late final GeneratedColumn<DateTime?> time = GeneratedColumn<DateTime?>(
+      'time', aliasedName, false,
+      typeName: 'INTEGER', requiredDuringInsert: true);
+  final VerificationMeta _tyimeMeta = const VerificationMeta('tyime');
+  late final GeneratedColumn<DateTime?> tyime = GeneratedColumn<DateTime?>(
+      'tyime', aliasedName, true,
+      typeName: 'INTEGER', requiredDuringInsert: false);
+  final VerificationMeta _testMeta = const VerificationMeta('test');
+  late final GeneratedColumnWithTypeConverter<Test, String?> test =
+      GeneratedColumn<String?>('test', aliasedName, false,
+              typeName: 'TEXT', requiredDuringInsert: true)
+          .withConverter<Test>($CategoriesTableTable.$converter1);
   @override
-  List<GeneratedColumn> get $columns => [id, name, fs, isActive, reals];
+  List<GeneratedColumn> get $columns =>
+      [id, name, fs, isActive, reals, t, time, tyime, test];
   @override
   String get aliasedName => _alias ?? 'categories_table';
   @override
@@ -170,6 +244,18 @@ class $CategoriesTableTable extends CategoriesTable
     } else if (isInserting) {
       context.missing(_realsMeta);
     }
+    context.handle(_tMeta, const VerificationResult.success());
+    if (data.containsKey('time')) {
+      context.handle(
+          _timeMeta, time.isAcceptableOrUnknown(data['time']!, _timeMeta));
+    } else if (isInserting) {
+      context.missing(_timeMeta);
+    }
+    if (data.containsKey('tyime')) {
+      context.handle(
+          _tyimeMeta, tyime.isAcceptableOrUnknown(data['tyime']!, _tyimeMeta));
+    }
+    context.handle(_testMeta, const VerificationResult.success());
     return context;
   }
 
@@ -187,6 +273,14 @@ class $CategoriesTableTable extends CategoriesTable
           .mapFromDatabaseResponse(data['${effectivePrefix}is_active'])!,
       const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}reals'])!,
+      $CategoriesTableTable.$converter0.mapToDart(const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}t'])),
+      const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}time'])!,
+      const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}tyime']),
+      $CategoriesTableTable.$converter1.mapToDart(const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}test']))!,
     );
   }
 
@@ -194,6 +288,10 @@ class $CategoriesTableTable extends CategoriesTable
   $CategoriesTableTable createAlias(String alias) {
     return $CategoriesTableTable(_db, alias);
   }
+
+  static TypeConverter<List<Te>, String> $converter0 =
+      const ListConverter<Te>();
+  static TypeConverter<Test, String> $converter1 = const EConverter<Test>();
 }
 
 class Recipe extends DataClass implements Insertable<Recipe> {
@@ -314,12 +412,6 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     this.instructions = const Value.absent(),
     this.category = const Value.absent(),
   });
-  RecipesCompanion.insertFrom(RecipesCompanion from) {
-    this.id = Value.of(from.id);
-    this.title = Value.of(from.title);
-    this.instructions = Value.of(from.instructions);
-    this.category = Value.of(from.category);
-  }
   RecipesCompanion.insert({
     this.id = const Value.absent(),
     required String title,

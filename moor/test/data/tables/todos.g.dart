@@ -151,13 +151,6 @@ class TodosTableCompanion extends UpdateCompanion<TodoEntry> {
     this.targetDate = const Value.absent(),
     this.category = const Value.absent(),
   });
-  TodosTableCompanion.insertFrom(TodosTableCompanion from) {
-    this.id = Value.of(from.id);
-    this.title = Value.of(from.title);
-    this.content = Value.of(from.content);
-    this.targetDate = Value.of(from.targetDate);
-    this.category = Value.of(from.category);
-  }
   TodosTableCompanion.insert({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
@@ -412,11 +405,6 @@ class CategoriesCompanion extends UpdateCompanion<Category> {
     this.description = const Value.absent(),
     this.priority = const Value.absent(),
   });
-  CategoriesCompanion.insertFrom(CategoriesCompanion from) {
-    this.id = Value.of(from.id);
-    this.description = Value.of(from.description);
-    this.priority = Value.of(from.priority);
-  }
   CategoriesCompanion.insert({
     this.id = const Value.absent(),
     required String description,
@@ -670,13 +658,6 @@ class UsersCompanion extends UpdateCompanion<User> {
     this.profilePicture = const Value.absent(),
     this.creationTime = const Value.absent(),
   });
-  UsersCompanion.insertFrom(UsersCompanion from) {
-    this.id = Value.of(from.id);
-    this.name = Value.of(from.name);
-    this.isAwesome = Value.of(from.isAwesome);
-    this.profilePicture = Value.of(from.profilePicture);
-    this.creationTime = Value.of(from.creationTime);
-  }
   UsersCompanion.insert({
     this.id = const Value.absent(),
     required String name,
@@ -923,10 +904,6 @@ class SharedTodosCompanion extends UpdateCompanion<SharedTodo> {
     this.todo = const Value.absent(),
     this.user = const Value.absent(),
   });
-  SharedTodosCompanion.insertFrom(SharedTodosCompanion from) {
-    this.todo = Value.of(from.todo);
-    this.user = Value.of(from.user);
-  }
   SharedTodosCompanion.insert({
     required int todo,
     required int user,
@@ -1033,11 +1010,6 @@ class TableWithoutPKCompanion extends UpdateCompanion<CustomRowClass> {
     this.someFloat = const Value.absent(),
     this.custom = const Value.absent(),
   });
-  TableWithoutPKCompanion.insertFrom(TableWithoutPKCompanion from) {
-    this.notReallyAnId = Value.of(from.notReallyAnId);
-    this.someFloat = Value.of(from.someFloat);
-    this.custom = Value.of(from.custom);
-  }
   TableWithoutPKCompanion.insert({
     required int notReallyAnId,
     required double someFloat,
@@ -1081,6 +1053,14 @@ class TableWithoutPKCompanion extends UpdateCompanion<CustomRowClass> {
       map['custom'] = Variable<String>(converter.mapToSql(custom.value)!);
     }
     return map;
+  }
+
+  TableWithoutPKCompanion setTableWithoutPKCompanion(CustomRowClass from) {
+    return TableWithoutPKCompanion(
+      notReallyAnId: Value(from.notReallyAnId),
+      someFloat: Value(from.someFloat),
+      custom: Value(from.custom),
+    );
   }
 
   factory TableWithoutPKCompanion.fromRowClass(CustomRowClass object,
@@ -1251,9 +1231,6 @@ class PureDefaultsCompanion extends UpdateCompanion<PureDefault> {
   const PureDefaultsCompanion({
     this.txt = const Value.absent(),
   });
-  PureDefaultsCompanion.insertFrom(PureDefaultsCompanion from) {
-    this.txt = Value.of(from.txt);
-  }
   PureDefaultsCompanion.insert({
     this.txt = const Value.absent(),
   });

@@ -1,5 +1,8 @@
 import 'package:moor/moor.dart';
 
+import 'example.dart';
+import 'list_converter.dart';
+
 part 'table.table.dart';
 
 @Entity()
@@ -9,8 +12,22 @@ class Categories {
   String? fs;
   late bool isActive;
   late double reals;
+  @Converter(converterType: ListConverter) List<Te>? t;
+  late DateTime time;
+  DateTime? tyime;
+  @Converter(converterType: EConverter) late Test test;
 
   Categories();
 
-  Categories.fromDb(this.id, this.name, this.fs, this.isActive, this.reals);
+  Categories.fromDb(
+      this.id,
+      this.name,
+      this.fs,
+      this.isActive,
+      this.reals,
+      this.t,
+      this.time,
+      this.tyime,
+      this.test
+      );
 }

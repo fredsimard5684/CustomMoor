@@ -100,10 +100,53 @@ class UseDao {
       this.include = const {}});
 }
 
+
+
+/// Annotation to use on classes that you want to generate a table.
 class Entity {
+  ///
   const Entity();
 }
 
+/// Annotation that should go inside an [Entity] type annotation. This should
+/// specify what will be the unique ID for this class that should be converted
+/// to a [Table]
 class UniqueID {
+  /// Annotation that should go inside an [Entity] type annotation. This should
+  /// specify what will be the unique ID for this class that should be converted
+  /// to a [Table]
   const UniqueID();
+}
+
+/// Annotation that should go inside an [Entity] type annotation. This specify
+/// some type in your class that cannot be inserted directly into the database
+/// and needs to be convert first. For exemple, type [Object] and [List] should
+/// be annotated by this. You first need to create a converter class that should
+/// be use to converter the specific type.
+///
+/// For [List], you can omit the [columnType] parameter.
+///
+/// For [Object] such as enum, you need to pass the return type for the object
+/// by specifying the [columnType]. For example, an enum class you should have
+/// the [columnType] parameter as [int]. This will indicate the type of column
+/// that moor will be converted to (example : [IntColumn] for [int]).
+class Converter {
+  /// The user create converter to be use
+  final dynamic converterType;
+  /// The return column type
+  final Type? columnType;
+
+  /// Annotation that should go inside an [Entity] type annotation. This specify
+  /// some type in your class that cannot be inserted directly into the database
+  /// and needs to be convert first. For exemple, type [Object] and [List] should
+  /// be annotated by this. You first need to create a converter class that should
+  /// be use to converter the specific type.
+  ///
+  /// For [List], you can omit the [columnType] parameter.
+  ///
+  /// For [Object] such as enum, you need to pass the return type for the object
+  /// by specifying the [columnType]. For example, an enum class you should have
+  /// the [columnType] parameter as [int]. This will indicate the type of column
+  /// that moor will be converted to (example : [IntColumn] for [int]).
+  const Converter({@required this.converterType,this.columnType});
 }
