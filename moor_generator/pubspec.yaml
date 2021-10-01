@@ -29,7 +29,11 @@ dependencies:
       path: moor
       ref: main
   sqlite3: '>=0.1.6 <2.0.0'
-  sqlparser: ^0.17.0
+  sqlparser:
+    git:
+      url: https://github.com/fredsimard5684/CustomMoor.git
+      path: sqlparser
+      ref: main
 
   # Dart analysis
   analyzer: "^2.1.0"
