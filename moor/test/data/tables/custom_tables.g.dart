@@ -142,6 +142,12 @@ class ConfigCompanion extends UpdateCompanion<Config> {
     this.syncState = const Value.absent(),
     this.syncStateImplicit = const Value.absent(),
   });
+  ConfigCompanion.insertFrom(ConfigCompanion from) {
+    this.configKey = Value.of(from.configKey);
+    this.configValue = Value.of(from.configValue);
+    this.syncState = Value.of(from.syncState);
+    this.syncStateImplicit = Value.of(from.syncStateImplicit);
+  }
   ConfigCompanion.insert({
     required String configKey,
     this.configValue = const Value.absent(),
@@ -373,6 +379,10 @@ class WithDefaultsCompanion extends UpdateCompanion<WithDefault> {
     this.a = const Value.absent(),
     this.b = const Value.absent(),
   });
+  WithDefaultsCompanion.insertFrom(WithDefaultsCompanion from) {
+    this.a = Value.of(from.a);
+    this.b = Value.of(from.b);
+  }
   WithDefaultsCompanion.insert({
     this.a = const Value.absent(),
     this.b = const Value.absent(),
@@ -475,6 +485,9 @@ class NoIdsCompanion extends UpdateCompanion<NoIdRow> {
   const NoIdsCompanion({
     this.payload = const Value.absent(),
   });
+  NoIdsCompanion.insertFrom(NoIdsCompanion from) {
+    this.payload = Value.of(from.payload);
+  }
   NoIdsCompanion.insert({
     required Uint8List payload,
   }) : payload = Value(payload);
@@ -672,6 +685,11 @@ class WithConstraintsCompanion extends UpdateCompanion<WithConstraint> {
     this.b = const Value.absent(),
     this.c = const Value.absent(),
   });
+  WithConstraintsCompanion.insertFrom(WithConstraintsCompanion from) {
+    this.a = Value.of(from.a);
+    this.b = Value.of(from.b);
+    this.c = Value.of(from.c);
+  }
   WithConstraintsCompanion.insert({
     this.a = const Value.absent(),
     required int b,
@@ -914,6 +932,12 @@ class MytableCompanion extends UpdateCompanion<MytableData> {
     this.isInserting = const Value.absent(),
     this.somedate = const Value.absent(),
   });
+  MytableCompanion.insertFrom(MytableCompanion from) {
+    this.someid = Value.of(from.someid);
+    this.sometext = Value.of(from.sometext);
+    this.isInserting = Value.of(from.isInserting);
+    this.somedate = Value.of(from.somedate);
+  }
   MytableCompanion.insert({
     this.someid = const Value.absent(),
     this.sometext = const Value.absent(),
@@ -1146,6 +1170,11 @@ class EmailCompanion extends UpdateCompanion<EMail> {
     this.title = const Value.absent(),
     this.body = const Value.absent(),
   });
+  EmailCompanion.insertFrom(EmailCompanion from) {
+    this.sender = Value.of(from.sender);
+    this.title = Value.of(from.title);
+    this.body = Value.of(from.body);
+  }
   EmailCompanion.insert({
     required String sender,
     required String title,
@@ -1349,6 +1378,10 @@ class WeirdTableCompanion extends UpdateCompanion<WeirdData> {
     this.sqlClass = const Value.absent(),
     this.textColumn = const Value.absent(),
   });
+  WeirdTableCompanion.insertFrom(WeirdTableCompanion from) {
+    this.sqlClass = Value.of(from.sqlClass);
+    this.textColumn = Value.of(from.textColumn);
+  }
   WeirdTableCompanion.insert({
     required int sqlClass,
     required String textColumn,

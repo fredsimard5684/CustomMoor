@@ -20,6 +20,7 @@ class UpdateCompanionWriter {
     _writeFields();
 
     _writeConstructor();
+    _writeConstructorCustomInsert();
     _writeInsertConstructor();
     _writeCustomConstructor();
 
@@ -113,6 +114,19 @@ class UpdateCompanionWriter {
     }
 
     _buffer.write('});\n');
+  }
+
+  void _writeConstructorCustomInsert() {
+
+    _buffer.write('${table.getNameForCompanionClass(scope.options)}.insertFrom('
+        '${table.getNameForCompanionClass(scope.options)} from)'
+        '{');
+
+    for (final column in table.columns) {
+      _buffer.write('this.${column.dartGetterName} = Value.of(from.${column.dartGetterName});');
+    }
+
+    _buffer.write('}\n');
   }
 
   /// Writes a special `.insert` constructor. All columns which may not be

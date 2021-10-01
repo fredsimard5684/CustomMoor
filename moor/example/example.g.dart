@@ -20,6 +20,13 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
     this.isActive = const Value.absent(),
     this.reals = const Value.absent(),
   });
+  CategoriesTableCompanion.insertFrom(CategoriesTableCompanion from) {
+    this.id = Value.of(from.id);
+    this.name = Value.of(from.name);
+    this.fs = Value.of(from.fs);
+    this.isActive = Value.of(from.isActive);
+    this.reals = Value.of(from.reals);
+  }
   CategoriesTableCompanion.insert({
     this.id = const Value.absent(),
     required String name,
@@ -311,6 +318,12 @@ class RecipesCompanion extends UpdateCompanion<Recipe> {
     this.instructions = const Value.absent(),
     this.category = const Value.absent(),
   });
+  RecipesCompanion.insertFrom(RecipesCompanion from) {
+    this.id = Value.of(from.id);
+    this.title = Value.of(from.title);
+    this.instructions = Value.of(from.instructions);
+    this.category = Value.of(from.category);
+  }
   RecipesCompanion.insert({
     this.id = const Value.absent(),
     required String title,
