@@ -1,0 +1,16 @@
+# We use netlify to deploy the documentation.
+
+[build]
+  publish = "docs/deploy"
+
+[[redirects]]
+  from = "https://moor.netlify.app/*"
+  to = "https://moor.simonbinder.eu/:splat"
+  status = 301
+  force = true
+
+[context.production]
+  environment = { BUILD_RELEASE="release" }
+
+[context.deploy-preview]
+  environment = {  }

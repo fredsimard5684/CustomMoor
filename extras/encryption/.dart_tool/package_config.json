@@ -1,0 +1,122 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "async",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/async-2.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "characters",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/characters-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "collection",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/collection-1.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "convert",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/convert-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "ffi",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/ffi-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter",
+      "rootUri": "file:///C:/Users/Fred/Documents/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/meta-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "moor",
+      "rootUri": "../../../moor",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
+      "name": "path",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pedantic-1.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sky_engine",
+      "rootUri": "file:///C:/Users/Fred/Documents/flutter/bin/cache/pkg/sky_engine",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/sqflite_common-2.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sqflite_sqlcipher",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/sqflite_sqlcipher-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sqlite3",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/sqlite3-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "stream_channel",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/stream_channel-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/synchronized-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "typed_data",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/typed_data-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "vector_math",
+      "rootUri": "file:///C:/Users/Fred/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/vector_math-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "encrypted_moor",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    }
+  ],
+  "generated": "2021-09-30T07:08:19.446496Z",
+  "generator": "pub",
+  "generatorVersion": "2.14.2"
+}
