@@ -20,13 +20,13 @@ class UpdateCompanionWriter {
     _writeFields();
 
     _writeConstructor();
-    _writeConstructorCustomInsert();
     _writeInsertConstructor();
     _writeCustomConstructor();
 
     _writeCopyWith();
     _writeToColumnsOverride();
     if (table.hasExistingRowClass) {
+      _writeForAutoInstantiateCompanionClassFromObject();
       _writeFromRowClass();
     }
     _writeToString();
@@ -116,16 +116,21 @@ class UpdateCompanionWriter {
     _buffer.write('});\n');
   }
 
-  void _writeConstructorCustomInsert() {
+  void _writeForAutoInstantiateCompanionClassFromObject() {
 
-    _buffer.write('${table.getNameForCompanionClass(scope.options)}.insertFrom('
-        '${table.getNameForCompanionClass(scope.options)} from)'
-        '{');
+    final dataClassName = table.dartTypeName;
+    final companionName = table.getNameForCompanionClass(scope.options);
+
+    _buffer.writeln('$companionName '
+        'set$companionName($dataClassName from) {');
+
+    _buffer.writeln('return $companionName (');
 
     for (final column in table.columns) {
-      _buffer.write('this.${column.dartGetterName} = Value.of(from.${column.dartGetterName});');
+      _buffer.write('${column.dartGetterName} : Value(from.${column.dartGetterName}),');
     }
 
+    _buffer.writeln(');');
     _buffer.write('}\n');
   }
 

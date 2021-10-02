@@ -15,7 +15,7 @@ class Categories {
   @Converter(converterType: ListConverter) List<Te>? t;
   late DateTime time;
   DateTime? tyime;
-  @Converter(converterType: EConverter) late Test test;
+  @Converter(converterType: EConverter, columnType: int) late Test test;
 
   Categories();
 

@@ -16,7 +16,7 @@ class CategoriesTable extends Table {
   TextColumn get t => text().map(const ListConverter<Te>()).nullable()();
   DateTimeColumn get time => dateTime()();
   DateTimeColumn get tyime => dateTime().nullable()();
-  TextColumn get test => text().map(const EConverter<Test>())();
+  IntColumn get test => integer().map(const EConverter<Test<int>>())();
   @override
   Set<Column> get primaryKey => {id};
 }

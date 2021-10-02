@@ -16,7 +16,7 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
   final Value<List<Te>?> t;
   final Value<DateTime> time;
   final Value<DateTime?> tyime;
-  final Value<Test> test;
+  final Value<dynamic> test;
   const CategoriesTableCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -37,7 +37,7 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
     this.t = const Value.absent(),
     required DateTime time,
     this.tyime = const Value.absent(),
-    required Test test,
+    required dynamic test,
   })  : name = Value(name),
         isActive = Value(isActive),
         reals = Value(reals),
@@ -52,7 +52,7 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
     Expression<List<Te>?>? t,
     Expression<DateTime>? time,
     Expression<DateTime?>? tyime,
-    Expression<Test>? test,
+    Expression<dynamic>? test,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -76,7 +76,7 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
       Value<List<Te>?>? t,
       Value<DateTime>? time,
       Value<DateTime?>? tyime,
-      Value<Test>? test}) {
+      Value<dynamic>? test}) {
     return CategoriesTableCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -120,7 +120,7 @@ class CategoriesTableCompanion extends UpdateCompanion<Categories> {
     }
     if (test.present) {
       final converter = $CategoriesTableTable.$converter1;
-      map['test'] = Variable<String>(converter.mapToSql(test.value)!);
+      map['test'] = Variable<int>(converter.mapToSql(test.value)!);
     }
     return map;
   }
@@ -208,10 +208,10 @@ class $CategoriesTableTable extends CategoriesTable
       'tyime', aliasedName, true,
       typeName: 'INTEGER', requiredDuringInsert: false);
   final VerificationMeta _testMeta = const VerificationMeta('test');
-  late final GeneratedColumnWithTypeConverter<Test, String?> test =
-      GeneratedColumn<String?>('test', aliasedName, false,
-              typeName: 'TEXT', requiredDuringInsert: true)
-          .withConverter<Test>($CategoriesTableTable.$converter1);
+  late final GeneratedColumnWithTypeConverter<dynamic, int?> test =
+      GeneratedColumn<int?>('test', aliasedName, false,
+              typeName: 'INTEGER', requiredDuringInsert: true)
+          .withConverter<dynamic>($CategoriesTableTable.$converter1);
   @override
   List<GeneratedColumn> get $columns =>
       [id, name, fs, isActive, reals, t, time, tyime, test];
@@ -283,7 +283,7 @@ class $CategoriesTableTable extends CategoriesTable
           .mapFromDatabaseResponse(data['${effectivePrefix}time'])!,
       const DateTimeType()
           .mapFromDatabaseResponse(data['${effectivePrefix}tyime']),
-      $CategoriesTableTable.$converter1.mapToDart(const StringType()
+      $CategoriesTableTable.$converter1.mapToDart(const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}test']))!,
     );
   }
@@ -295,7 +295,8 @@ class $CategoriesTableTable extends CategoriesTable
 
   static TypeConverter<List<Te>, String> $converter0 =
       const ListConverter<Te>();
-  static TypeConverter<Test, String> $converter1 = const EConverter<Test>();
+  static TypeConverter<dynamic, int> $converter1 =
+      const EConverter<Test<int>>();
 }
 
 class Recipe extends DataClass implements Insertable<Recipe> {
