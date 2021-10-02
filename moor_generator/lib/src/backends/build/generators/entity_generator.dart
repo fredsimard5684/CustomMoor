@@ -83,7 +83,7 @@ class EntityGenerator extends Generator {
                   nullString = '.nullable()';
                 }
 
-                buffer.writeln('TextColumn get $fieldName => text().map('
+                buffer.writeln('TextColumn get $fieldName => text().map(const '
                     '${converter.toString()}<$genericType>())$nullString();');
               } else {
                 throw Exception(
@@ -119,25 +119,27 @@ class EntityGenerator extends Generator {
                 if (f.type.toString().contains('?')) {
                   nullString = '.nullable()';
                 }
-                buffer.writeln(
-                    'TextColumn get $fieldName => text().map('
-                        '${converter.toString()}<${f.type.toString()}>())$nullString();');
                 //When using a pure object
+                if (annotation.getField('columnType')!.toTypeValue()?.element == null) {
+                  buffer.writeln(
+                      'TextColumn get $fieldName => text().map(const '
+                      '${converter.toString()}<${f.type.toString()}>())$nullString();');
+                }
                 //When using enum
-                // else {
-                //   var type = annotation.getField('columnType')!.toTypeValue();
-                //
-                //   List? typeArguments = setTypeList(type!);
-                //   if (typeArguments == null) {
-                //     throw Exception(
-                //         'Please insert only primitive type for the Converter'
-                //         ' annotation. Wrong field: $fieldName');
-                //   }
-                //
-                //   buffer.writeln(
-                //       '${typeArguments[0]} get $fieldName => ${typeArguments[1]}.map(const '
-                //       '${converter.toString()}<${f.type.toString()}<${typeArguments[2]}>>())$nullString();');
-                // }
+                else {
+                  var type = annotation.getField('columnType')!.toTypeValue();
+
+                  List? typeArguments = setTypeList(type!);
+                  if (typeArguments == null) {
+                    throw Exception(
+                        'Please insert only primitive type for the Converter'
+                        ' annotation. Wrong field: $fieldName');
+                  }
+
+                  buffer.writeln(
+                      '${typeArguments[0]} get $fieldName => ${typeArguments[1]}.map('
+                      '${converter.toString()}<${f.type.toString()}>())$nullString();');
+                }
               } else {
                 throw Exception('Please insert the Converter annotation for '
                     'this field $fieldName');
